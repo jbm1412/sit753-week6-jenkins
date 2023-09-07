@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Build") {
+            steps {
+                //Maven as build automation tool
+                echo "Building..."
+            }
+        }
+        stage("Unit and Integration Tests") {
+            steps {
+                //JUnit as unit test automation tool
+                //Selenium as integration test automation tool 
+                echo "Testing..."
+            }
+        }
+        stage("Code Analysis") {
+            steps {
+                //FindBugs as code analysis tool
+                echo "Analysing..."
+            }
+        }
+        stage("Security Scan") {
+            steps {
+                //JFrog SCA as security scanning tool
+                echo "Scanning..."
+            }
+        }
+        stage("Integration Tests on Staging") {
+            steps {
+                //Selenium as integration tests on staging
+                echo "Integration Testing..."
+            }
+        }
+        stage("Deploy to Production") {
+            steps {
+                // AWS EC2 instance as deployment tool
+                echo "Deploying..."
+            }
+        }
+    }
+
+    post{
+        always{
+            mail to: "jbmanonarayanan@gmail.com",
+            subject: "Build Status Email",
+            body: "Build has been completed!"
+        }
+    }
+}
