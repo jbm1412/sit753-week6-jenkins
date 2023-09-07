@@ -27,6 +27,12 @@ pipeline {
                 echo "Scanning..."
             }
         }
+        stage("Deploy to Staging") {
+            steps {
+                // AWS EC2 instance as deployment tool
+                echo "Deploying to Staging..."
+            }
+        }
         stage("Integration Tests on Staging") {
             steps {
                 //Selenium as integration tests on staging
@@ -36,7 +42,7 @@ pipeline {
         stage("Deploy to Production") {
             steps {
                 // AWS EC2 instance as deployment tool
-                echo "Deploying..."
+                echo "Deploying to Production..."
             }
         }
     }
